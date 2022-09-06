@@ -1,4 +1,4 @@
 class Ticket < ApplicationRecord
   belongs_to :event
-  belongs_to :user
+  belongs_to :owner, class_name: "User"
 end

@@ -15,4 +15,4 @@
 #              capacity: 60_000,
 #              image_url: "app/assets/images/emirates.jpeg")
 
-Event.create(date: Date.new(2022, 10, 30), name: "Arsenal v Forest", venue_id: 1)
+# Event.create(date: Date.new(2022, 10, 30), name: "Arsenal v Forest", venue_id: 1)

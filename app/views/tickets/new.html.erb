@@ -1,0 +1,8 @@
+<h3>Sell a ticket!</h3>
+
+  <%= simple_form_for [@event, @ticket] do |f| %>
+      <%= f.input :price %>
+      <%= f.input :seat %>
+      <%# <% f.input :for_sale, selected: f.for_sale || true  %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>

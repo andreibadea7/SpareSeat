@@ -1,1 +1,9 @@
 <h1>Browse available tickets for <%= @event.name %></h1>
+
+<h3>Tickets for the match</h3>
+
+<% @event.tickets.each do |ticket| %>
+<% ticket.for_sale? %>
+<p>Seat: <%= ticket.seat %> </p>
+<p>Price: <%= ticket.price %></p>
+<% end %>

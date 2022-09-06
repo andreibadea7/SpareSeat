@@ -1,5 +1,9 @@
 class Ticket < ApplicationRecord
+  # Associations
   belongs_to :event
-  monetize :price_cents
   belongs_to :owner, class_name: "User"
+  has_many :orders
+
+  # Monetize Config
+  monetize :price_cents
 end

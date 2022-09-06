@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_161821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
     t.bigint "seller_id", null: false
     t.bigint "buyer_id", null: false
     t.bigint "ticket_id", null: false
-    t.integer "amount_cents", default: 0, null: false
+    t.money "amount", scale: 2
     t.string "checkout_session_id"
     t.string "state"
     t.datetime "created_at", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
   create_table "tickets", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "owner_id", null: false
-    t.boolean "for_sale"
+    t.boolean "for_sale", default: true
     t.string "seat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

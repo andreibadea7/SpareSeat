@@ -2,7 +2,6 @@
 
 <ul>
   <% @events.each do |event| %>
-  <img src="<% event.venue.image_url %>" alt="Picture of <%= event.venue.name %> ">
   <p>Name: <%= event.name %><p>
   <li> Date: <%= event.date %></li>
   <%= link_to "View tickets for this match!", event_path(event) %>

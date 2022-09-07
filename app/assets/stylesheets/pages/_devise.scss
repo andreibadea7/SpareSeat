@@ -1,0 +1,36 @@
+ body.devise {
+  background-image: linear-gradient(118.98deg, rgba(237, 70, 144, 0.9), rgba(85, 34, 204, 0.9))
+  }
+
+.form-registration {
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.5) 10px 8px 24px;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  margin: auto;
+  margin-top: 39px; // This is needed so that notifications won't overlap the form!
+  margin-bottom: 39px;
+  border-radius: 25px;
+}
+
+.Form--text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.submit-button {
+  background-image: linear-gradient(118.98deg, rgba(237, 70, 144, 0.9), rgba(85, 34, 204, 0.9));
+  color: white;
+  padding: 4px 50px 4px 50px;
+  border-radius: 25px;
+
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}

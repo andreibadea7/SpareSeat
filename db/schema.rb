@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
     t.bigint "seller_id", null: false
     t.bigint "buyer_id", null: false
     t.bigint "ticket_id", null: false
-    t.integer "amount_cents", default: 0, null: false
+    t.money "amount", scale: 2
     t.string "checkout_session_id"
     t.string "state"
     t.datetime "created_at", null: false

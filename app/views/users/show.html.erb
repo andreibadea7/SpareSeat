@@ -1,5 +1,11 @@
 <h1>Welcome <%= @user.first_name %> to your profile!</h1>
 
+<h2>Profile Details</h2>
+
+<%= cl_image_tag @user.photo.key, class: "avatar-large" %>
+<p><%= @user.first_name %> <%= @user.last_name %> </p>
+<p><%= @user.email %></p>
+
 <%= link_to "Edit your profile details", edit_user_registration_path(@user) %>
 
 <div>

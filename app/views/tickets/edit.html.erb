@@ -1,0 +1,7 @@
+<h3>Edit this ticket listing!</h3>
+
+  <%= simple_form_for @ticket do |f| %>
+      <%= f.input :price %>
+      <%= f.input :seat %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>

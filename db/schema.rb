@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_133629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_events_performers_on_event_id"
     t.index ["performer_id"], name: "index_events_performers_on_performer_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image_url"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -76,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
   create_table "tickets", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "owner_id", null: false
-    t.boolean "for_sale"
+    t.boolean "for_sale", default: true
     t.string "seat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,6 +102,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -101,11 +113,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_141751) do
     t.string "name"
     t.string "city"
     t.string "country"
-    t.string "post_code"
     t.integer "capacity"
-    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
   end
 
   add_foreign_key "chatrooms", "users", column: "participant_one_id"

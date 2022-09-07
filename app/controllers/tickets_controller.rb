@@ -20,6 +20,22 @@ class TicketsController < ApplicationController
     end
   end
 
+  def edit
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+    @ticket.update(ticket_params)
+    redirect_to event_path
+  end
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy
+    redirect_to my_profile_path
+  end
+
   private
 
   def ticket_params

@@ -2,9 +2,11 @@
 
 <ul>
   <% @events.each do |event| %>
-  <p>Name: <%= event.name %><p>
-  <li> Date: <%= event.date %></li>
-  <%= link_to "View tickets for this match!", event_path(event) %>
-  <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
+    <% if event.date > Date.today %>
+      <p>Name: <%= event.name %><p>
+      <li> Date: <%= event.date %></li>
+      <%= link_to "View tickets for this match!", event_path(event) %>
+      <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
+    <% end %>
   <% end %>
 </ul>

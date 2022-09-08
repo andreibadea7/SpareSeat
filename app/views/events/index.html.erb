@@ -1,12 +1,21 @@
-<h1>A list of all the different events on!</h1>
 
-<ul>
-  <% @events.each do |event| %>
-    <% if event.date > Date.today %>
-      <p>Name: <%= event.name %><p>
-      <li> Date: <%= event.date %></li>
-      <%= link_to "View tickets for this match!", event_path(event) %>
-      <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
-    <% end %>
-  <% end %>
-</ul>
+<%= render "shared/navbardark" %>
+
+<div class="navbar-space mt-5">
+  <div class="cards">
+      <% @events.each do |event| %>
+        <div class="card-trip">
+          <div class="card-trip-infos">
+            <div>
+              <p>Name: <%= event.name %><p>
+              <li> Date: <%= event.date %></li>
+              <%= link_to "View tickets for this match!", event_path(event) %>
+              <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

@@ -1,16 +1,9 @@
+
 <h1>Welcome to your profile <%= @user.first_name %>!</h1>
 
-<h2>Profile Details</h2>
-
-<%= cl_image_tag @user.photo.key, class: "avatar-large" %>
-<p><%= @user.first_name %> <%= @user.last_name %> </p>
-<p><%= @user.email %></p>
-
-<%= link_to "Edit your profile details", edit_user_registration_path(@user) %>
+<%= render 'shared/navbardark' %>
 
 <div>
-  <h3>Your ticket listings</h3>
-
   <% @my_tickets_selling.each do |listing| %>
     <%= listing.event[:name] %>:
     <%= listing.event[:date].strftime('%d-%m-%Y') %>
@@ -22,16 +15,15 @@
 </div>
 
 <div>
-
-<h3>Your upcoming tickets!</h3>
-
-<% @my_tickets_purchased.each do |bought| %>
-  <% if bought.ticket.event[:date].strftime('%d-%m-%Y') > Date.today.strftime('%d-%m-%Y') %>
-    <p><strong>TICKET</strong>: <%= bought.ticket.event[:name] %> </p>
-    <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
-    <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
-    <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
+  <h3>Your upcoming tickets!</h3>
+  <% @my_tickets_purchased.each do |bought| %>
+    <% if bought.ticket.event[:date].strftime('%d-%m-%Y') > Date.today.strftime('%d-%m-%Y') %>
+      <p><strong>TICKET</strong>: <%= bought.ticket.event[:name] %> </p>
+      <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
+      <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
+      <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
+    <% end %>
   <% end %>
-<% end %>
-
 </div>
+
+<%= render 'shared/footer' %>

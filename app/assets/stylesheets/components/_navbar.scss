@@ -24,18 +24,19 @@
 }
 
 .navbar.active .nav-link {
-  color: #242565;
+  color: #555;
 }
 
 .navbar.active .nav-link:hover,
 .navbar.active .nav-link:focus {
-  color: #242565;
+  color: #555;
   text-decoration: none;
 }
 
 .navbar.active .navbar-brand {
-  color: #242565;
+  color: #555;
 }
+
 
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
@@ -44,6 +45,6 @@
   }
 
   .navbar .navbar-brand, .navbar .nav-link {
-      color: #242565;
+      color: #555;
   }
 }

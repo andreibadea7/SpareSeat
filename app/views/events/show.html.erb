@@ -1,11 +1,29 @@
 <h1>Browse available tickets for <%= @event.name %></h1>
 
-<h3>Tickets for the match</h3>
+<h3>Tickets</h3>
 
-<% @event.tickets.each do |ticket| %>
-<% ticket.for_sale? %>
+
+<% @available_tickets.each do |ticket| %>
 <p>Seat: <%= ticket.seat %> </p>
-<p>Price: <%= ticket.price %></p>
-<%= link_to "Buy this ticket!", "#" %>
-<%= link_to "Message the owner about this ticket", "#" %>
+<p>Price: £<%= ticket.price %></p>
+<% if ticket.owner = current_user %>
+  <p>Owner: <%= "You" %></p>
+<% else %>
+  <p>Owner: <%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
 <% end %>
+
+<% if ticket.owner != current_user %>
+  <%= form_with url: orders_path do %>
+    <%= hidden_field_tag 'ticket_id', ticket.id %>
+    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <%= link_to "Message the owner about this ticket", "#" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h3>Stadium information: <%= @event.venue[:name] %></h3>
+<ul>
+<li>Address: <%= @event.venue[:address] %>, <%= @event.venue[:city] %></li>
+<li>Capacity: <%= number_with_delimiter(@event.venue[:capacity]) %></li>
+</ul>

@@ -1,12 +1,29 @@
-<h1>A list of all the different events on!</h1>
+<div data-controller="search-events">
+  <%= render "shared/navbar2" %>
 
-<ul>
-  <% @events.each do |event| %>
-    <% if event.date > Date.today %>
-      <p>Name: <%= event.name %><p>
-      <li> Date: <%= event.date %></li>
-      <%= link_to "View tickets for this match!", event_path(event) %>
-      <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
-    <% end %>
-  <% end %>
-</ul>
+  <%# Header %>
+  <div class="header border-top">
+    <div class="container">
+      <h3 class="align-middle">Games</h3>
+      <ul class="games-filters">
+        <li class="games-filters-item">Sport</li>
+        <li class="games-filters-item">Price</li>
+      </ul>
+    </div>
+  </div>
+
+  <%# Events list %>
+  <%= render "events/list", events: @events %>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

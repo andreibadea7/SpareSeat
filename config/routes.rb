@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   end
   resources :tickets, only: [:edit, :update, :destroy]
   get :my_profile, to: 'users#show'
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
 end

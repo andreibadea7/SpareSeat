@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_143541) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_110106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,17 +91,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_143541) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "seller_id", null: false
-    t.bigint "buyer_id", null: false
-    t.bigint "ticket_id", null: false
-    t.money "amount", scale: 2
-    t.string "checkout_session_id"
     t.string "state"
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
-    t.index ["seller_id"], name: "index_orders_on_seller_id"
+    t.integer "amount_cents", default: 0, null: false
     t.index ["ticket_id"], name: "index_orders_on_ticket_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "performers", force: :cascade do |t|
@@ -157,8 +155,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_143541) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "orders", "tickets"
-  add_foreign_key "orders", "users", column: "buyer_id"
-  add_foreign_key "orders", "users", column: "seller_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "tickets", "events"
   add_foreign_key "tickets", "users", column: "owner_id"
 end

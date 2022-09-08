@@ -27,7 +27,7 @@ class TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     @ticket.update(ticket_params)
-    redirect_to event_path
+    redirect_to my_profile_path
   end
 
   def destroy

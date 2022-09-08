@@ -1,21 +1,22 @@
 <header class="header" data-controller="hello">
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <p class="navbar-brand"><strong><%= link_to "SpareSeat", root_path, class: "text-decoration-none navbar-brand"%></strong></p>
 
+
+            <p class="navbar-brand"><strong><%= link_to "SpareSeat", root_path, class: "text-decoration-none navbar-brand text-primary"%></strong></p>
             <button type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
             <div id="navbarSupportedContent me-auto" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                     <li class="nav-item active ">
-                        <%= link_to "Home", root_path, class: "nav-link" %>
+                     <li class="nav-item active">
+                        <%= link_to "Home", root_path, class: "nav-link text-primary" %>
                       </li>
 
                     <% if user_signed_in? %>
 
                       <li class="nav-item active">
-                        <%= link_to "Events", events_path, class: "nav-link" %>
+                        <%= link_to "Events", events_path, class: "nav-link text-primary" %>
                       </li>
 
                       <li class="nav-item active">
@@ -23,21 +24,21 @@
                            <%# TODO: BETTER CROPPING??? %>
                           <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 50, height: 50, crop: "fill", class: "avatar dropdown-toggle", id: "navbarDropdown", data: {bs_toggle: "dropdown"} %>
                         <% else %>
-                          <div class="Navbar__avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
+                          <div class="Navbar__avatar dropdown-toggle" id="navbar-wagon-menu" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle Navbar__user-icon"></i>
                           </div>
                         <% end %>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                          <%= link_to "Profile", my_profile_path, class: "dropdown-item" %>
-                          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+                          <%= link_to "Profile", my_profile_path, class: "dropdown-item text-primary" %>
+                          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-primary" %>
                         </div>
                       </li>
                     <% else %>
                       <li class="nav-item active">
-                        <%= link_to "Events", "events", class: "nav-link" %>
+                        <%= link_to "Events", "events", class: "nav-link text-primary" %>
                       </li>
                       <li class="nav-item">
-                        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+                        <%= link_to "Sign in", new_user_session_path, class: "nav-link text-primary" %>
                       </li>
                     <% end %>
                 </ul>

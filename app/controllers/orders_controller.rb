@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       line_items: [
         quantity: 1,
         price_data: {
-          unit_amount: @ticket.price.to_s.to_i,
+          unit_amount: @ticket.price.fractional,
           currency: 'gbp',
           product_data: {
             name: @ticket.event[:name]

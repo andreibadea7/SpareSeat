@@ -1,14 +1,14 @@
 <header class="header" data-controller="hello">
-    <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <p class="navbar-brand"><strong><%= link_to "SpareSeat", root_path, class: "text-decoration-none navbar-brand"%></strong></p>
 
             <button type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
             <div id="navbarSupportedContent me-auto" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
 
-                     <li class="nav-item active">
+                     <li class="nav-item active ">
                         <%= link_to "Home", root_path, class: "nav-link" %>
                       </li>
 
@@ -23,7 +23,7 @@
                            <%# TODO: BETTER CROPPING??? %>
                           <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 50, height: 50, crop: "fill", class: "avatar dropdown-toggle", id: "navbarDropdown", data: {bs_toggle: "dropdown"} %>
                         <% else %>
-                          <div class="Navbar__avatar dropdown-toggle" id="navbar-wagon-menu" data-bs-toggle="dropdown">
+                          <div class="Navbar__avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle Navbar__user-icon"></i>
                           </div>
                         <% end %>

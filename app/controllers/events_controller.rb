@@ -1,6 +1,13 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.all.limit(10)
+    # raise
+    @events = Event.joins(:venue).where("venues.name ILIKE ? OR events.name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "events/list", locals: { events: @events }, formats: [:html] }
+    end
   end
 
   def show

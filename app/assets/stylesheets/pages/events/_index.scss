@@ -1,0 +1,23 @@
+.header .container {
+  width: 800px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h3 {
+  margin-bottom: 0;
+}
+
+.games-filters {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.games-filters-item {
+  padding: 0.25em 1.5em;
+}

@@ -1,0 +1,18 @@
+<div class="cards" data-search-events-target="list">
+  <% events.each do |event| %>
+    <div class="card">
+      <%= image_tag event.venue.images.first.image_url %>
+      <div class="card-infos">
+        <div>
+          <h2>
+            <%= link_to event.name,
+                event_path(event),
+                style: "text-decoration: none; color: black;" %>
+          </h2>
+          <p><%= event.venue.name %></p>
+        </div>
+        <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,22 +1,18 @@
-
-<%= render "shared/navbardark" %>
-
-<div class="navbar-space">
-  <div class="cards">
-      <% @events.each do |event| %>
-        <div class="card-trip">
-         <%= image_tag("wembley.png") %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to event.name, event_path(event), class: "text-decoration-none" %><h2>
-              <p> <%= event.date %></p>
-              <%= link_to "View tickets", event_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
-              <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+<div data-controller="search-events">
+  <%= render "shared/navbardark" %>
+  
+  <%# Header %>
+  <div class="header border-top">
+    <div class="container">
+      <h3 class="align-middle">Games</h3>
+      <ul class="games-filters">
+        <li class="games-filters-item">Sport</li>
+        <li class="games-filters-item">Price</li>
+      </ul>
+    </div>
   </div>
-</div>
 
+  <%# Events list %>
+  <%= render "events/list", events: @events %>
+</div>
 <%= render "shared/footer" %>

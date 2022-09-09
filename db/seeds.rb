@@ -5,6 +5,7 @@ require 'json'
 require "nokogiri"
 
 def add_premier_league_venues_to_database
+  Event.delete_all
   Venue.delete_all
   puts "Adding venues..."
   url = URI("https://v3.football.api-sports.io/teams?league=39&season=2022")

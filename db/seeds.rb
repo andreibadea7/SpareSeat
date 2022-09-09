@@ -61,12 +61,13 @@ def add_premier_league_events_to_database
     away_team = info["teams"]["away"]["name"]
     venue = info["fixture"]["venue"]["name"]
     game = "#{home_team} vs #{away_team}"
-    Event.create(date: date,
-                 name: game,
-                 venue_id: Venue.where("name = ?", venue).ids.first,
-                 category: "Football")
-    puts "#{"\u2713".encode('utf-8')} | Event | #{game}"
-  end
+    if date > Date.today.to_s
+      Event.create(date: date,
+                   name: game,
+                   venue_id: Venue.where("name = ?", venue).ids.first,
+                   category: "Football")
+      puts "#{"\u2713".encode('utf-8')} | Event | #{game}"
+    end
   puts "#{"\u2713".encode('utf-8') * 3} | All Premier League Events have been Uploaded onto The Database"
 end
 

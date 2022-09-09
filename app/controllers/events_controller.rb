@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   def index
+    # @events = Event.order(:date).page params[:page]
+
     @events = Event.all.limit(10)
     # raise
     @events = Event.joins(:venue).where("venues.name ILIKE ? OR events.name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")

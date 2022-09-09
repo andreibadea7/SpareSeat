@@ -1,30 +1,65 @@
 
 <h1>Welcome to your profile <%= @user.first_name %>!</h1>
 
-<%= render 'shared/navbardark' %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Tickets Selling</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Upcoming Tickets</button>
+  </li>
+</ul>
+<div class="tab-content m-5" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-<div>
-  <h3>Your ticket listings</h3>
-  <% @my_tickets_selling.each do |listing| %>
-    <%= listing.event[:name] %>:
-    <%= listing.event[:date].strftime('%d-%m-%Y') %>
-    <p>£<%= listing.price %></p>
-    <%= link_to "Edit this listing", edit_ticket_path(listing) %>
-    <%= link_to "Remove this listing", ticket_path(listing),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <% end %>
-</div>
-
-<div>
-  <h3>Your upcoming tickets!</h3>
-  <% @my_tickets_purchased.each do |bought| %>
-    <% if bought.ticket.event[:date].strftime('%d-%m-%Y') > Date.today.strftime('%d-%m-%Y') %>
-      <p><strong>TICKET</strong>: <%= bought.ticket.event[:name] %> </p>
-      <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
-      <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
-      <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
+    <h3><strong>Photo</strong></h3>
+    <% if current_user.photo.key.present? %>
+      <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 200, height: 200, crop: "fill", class: "avatar-large" %>
+    <% else %>
+      <p>You have not added a photo, if you would like to add one, click <%= link_to "here", edit_user_registration_path(@user) %></p>
     <% end %>
-  <% end %>
+    <hr>
+    <h3><strong>Name</strong></h3>
+    <p><%= @user.first_name %> <%= @user.last_name %> </p>
+    <hr>
+    <h3><strong>Email</strong></h3>
+    <p><%= @user.email %></p>
+    <hr>
+    <%= link_to "Edit your profile details", edit_user_registration_path(@user), class: "btn btn-primary" %>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @my_tickets_selling.each do |listing| %>
+    <div class="card-trip p-3">
+      <div class="card-trip-info">
+        <%= listing.event[:name] %>:
+        <%= listing.event[:date].strftime('%d-%m-%Y') %>
+        <p>£<%= listing.price %></p>
+        <%= link_to "Edit this listing", edit_ticket_path(listing), class: "btn btn-primary"  %>
+        <%= link_to "Remove this listing", ticket_path(listing),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary"  %>
+        <hr>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <% @my_tickets_purchased.each do |bought| %>
+    <div class="card-trip p-3">
+      <div class="card-trip-info">
+        <% if bought.ticket.event[:date].strftime('%d-%m-%Y') > Date.today.strftime('%d-%m-%Y') %>
+            <p><strong>TICKET</strong>: <%= bought.ticket.event[:name] %> </p>
+            <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
+            <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
+            <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <%= render 'shared/footer' %>

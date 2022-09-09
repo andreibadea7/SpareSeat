@@ -1,21 +1,19 @@
+<div data-controller="search-events">
+  <%= render "shared/navbar2" %>
 
-<%= render "shared/navbardark" %>
-
-<div class="navbar-space mt-5">
-  <div class="cards">
-    <% @events.each do |event| %>
-        <div class="card-trip">
-          <div class="card-trip-infos">
-            <div>
-              <p>Name: <%= event.name %><p>
-              <li> Date: <%= event.date.strftime('%d-%m-%Y') %></li>
-              <%= link_to "View tickets for this match!", event_path(event) %>
-              <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+  <%# Header %>
+  <div class="header border-top">
+    <div class="container">
+      <h3 class="align-middle">Games</h3>
+      <ul class="games-filters">
+        <li class="games-filters-item">Sport</li>
+        <li class="games-filters-item">Price</li>
+      </ul>
+    </div>
   </div>
+
+  <%# Events list %>
+  <%= render "events/list", events: @events %>
 </div>
 
 <%= paginate @events %>

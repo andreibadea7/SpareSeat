@@ -61,9 +61,9 @@
             <p>Seat: <%= bought.ticket.seat %></p>
             <%= link_to "View QR code for this match", order_path(bought.id)  %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>

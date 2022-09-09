@@ -15,12 +15,16 @@
     <% @available_tickets.each do |ticket| %>
       <div class="card-trip">
         <%= image_tag("wembley.png") %>
-        <div class="card-trip-infos">
-          <p>Seat: <%= ticket.seat %> </p>
-          <p>Price: £<%= ticket.price %></p>
-
-          <div>
-            <% if ticket.owner.id != current_user.id %>
+          <div class="card-trip-infos">
+            <h3>Seat: <%= ticket.seat %> </h3>
+            <h3>Price: £<%= ticket.price %></h3>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% if ticket.owner.id == current_user.id %>
+                <h4>You</h4>
+              <% else %>
+                <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
+              <% end %>
+              <% if ticket.owner.id != current_user.id %>
               <%= form_with url: orders_path do %>
                 <%= hidden_field_tag 'ticket_id', ticket.id %>
                 <%= submit_tag 'Purchase', class: 'btn btn-primary m-1' %>
@@ -29,17 +33,11 @@
                 <% end %>
               <% end %>
           </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <% if ticket.owner.id == current_user.id %>
-              <p>You</p>
-            <% else %>
-              <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
-            <% end %>
-            </div>
         </div>
       <% end %>
   </div>
 </div>
+<%= render "shared/footer" %>
 
 
 

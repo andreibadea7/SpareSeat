@@ -1,4 +1,21 @@
-<%= render 'shared/navbardark' %>
+<%= render 'shared/navbar2' %>
+
+<div class="top-section">
+  <div class="container">
+    <div class="event-information">
+      <div>
+        <h2><%= @event.name %></h2>
+        <p class="venue-name"><%= @event.venue.address %></p>
+      </div>
+      <p><%= @event.date.strftime("%d %B, %Y | %H:%M") %></p>
+    </div>
+  </div>
+</div>
+<div class="event-banner"
+     style="background-image: linear-gradient(rgba(0,0,0,0.3),
+                              rgba(0,0,0,0.3)),
+                              url(<%= @event.venue.images.first.image_url %>);">
+</div>
 
 <div class="navbar-space m-5">
   <h1><%= @event.name %></h1>
@@ -9,8 +26,8 @@
     <li>Capacity: <%= number_with_delimiter(@event.venue[:capacity]) %></li>
   </ul>
 
-    <h3>Tickets</h3>
-    <p class="text-muted"><%= @available_tickets.length %> tickets available</p>
+  <h3>Tickets</h3>
+  <p class="text-muted"><%= @available_tickets.length %> tickets available</p>
   <div class="cards">
     <% @available_tickets.each do |ticket| %>
       <div class="card-trip">
@@ -18,27 +35,28 @@
         <div class="card-trip-infos">
           <p>Seat: <%= ticket.seat %> </p>
           <p>Price: £<%= ticket.price %></p>
-
           <div>
             <% if ticket.owner.id != current_user.id %>
               <%= form_with url: orders_path do %>
                 <%= hidden_field_tag 'ticket_id', ticket.id %>
                 <%= submit_tag 'Purchase', class: 'btn btn-primary m-1' %>
                 <br>
-              <%= link_to "Message the Seller", "", class: 'btn btn-primary m-1' %>
-                <% end %>
+                <%= link_to "Message the Seller", "", class: 'btn btn-primary m-1' %>
               <% end %>
-          </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <% if ticket.owner.id == current_user.id %>
-              <p>You</p>
-            <% else %>
-              <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
             <% end %>
-            </div>
+          </div>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% if ticket.owner.id == current_user.id %>
+            <p>You</p>
+          <% else %>
+            <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
+  <%= link_to "Sell new ticket for this event", new_event_ticket_path(@event) %>
+
 </div>
 
 

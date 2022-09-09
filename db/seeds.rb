@@ -5,7 +5,7 @@ require 'json'
 require "nokogiri"
 
 def add_premier_league_venues_to_database
-  Venue.delete_all
+  # Venue.delete_all
   url = URI("https://v3.football.api-sports.io/teams?league=39&season=2022")
 
   http = Net::HTTP.new(url.host, url.port)
@@ -68,7 +68,8 @@ def add_premier_league_events_to_database
                    category: "Football")
       puts "#{"\u2713".encode('utf-8')} | Event | #{game}"
     end
-  puts "#{"\u2713".encode('utf-8') * 3} | All Premier League Events have been Uploaded onto The Database"
+    puts "#{"\u2713".encode('utf-8') * 3} | All Premier League Events have been Uploaded onto The Database"
+  end
 end
 
 def add_images_to_premier_league_stadiums_venues

@@ -3,12 +3,12 @@
 
 <div class="navbar-space mt-5">
   <div class="cards">
-      <% @events.each do |event| %>
+    <% @events.each do |event| %>
         <div class="card-trip">
           <div class="card-trip-infos">
             <div>
               <p>Name: <%= event.name %><p>
-              <li> Date: <%= event.date %></li>
+              <li> Date: <%= event.date.strftime('%d-%m-%Y') %></li>
               <%= link_to "View tickets for this match!", event_path(event) %>
               <%= link_to "Sell a ticket for this match!", new_event_ticket_path(event) %>
             </div>
@@ -18,4 +18,5 @@
   </div>
 </div>
 
+<%= paginate @events %>
 <%= render "shared/footer" %>

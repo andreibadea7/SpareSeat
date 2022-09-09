@@ -52,5 +52,7 @@ data_fixtures["response"].each do |info|
   away_team = info["teams"]["away"]["name"]
   venue = info["fixture"]["venue"]["name"]
   game = "#{home_team} vs #{away_team}"
-  Event.create(date: date, name: game, venue_id: Venue.where("name = ?", venue).ids.first, category: "Football")
+  if date > Date.today.to_s
+    Event.create(date: date, name: game, venue_id: Venue.where("name = ?", venue).ids.first, category: "Football")
+  end
 end

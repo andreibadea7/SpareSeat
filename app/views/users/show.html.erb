@@ -4,6 +4,7 @@
 <%= render 'shared/navbardark' %>
 
 <div>
+  <h3>Your ticket listings</h3>
   <% @my_tickets_selling.each do |listing| %>
     <%= listing.event[:name] %>:
     <%= listing.event[:date].strftime('%d-%m-%Y') %>

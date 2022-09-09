@@ -37,26 +37,27 @@
           <div class="card-trip-infos">
             <h3>Seat: <%= ticket.seat %> </h3>
             <h3>Price: £<%= ticket.price %></h3>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-              <% if ticket.owner.id == current_user.id %>
-                <h4>You</h4>
-              <% else %>
-                <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
-              <% end %>
-              <% if ticket.owner.id != current_user.id %>
-
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            <% if ticket.owner.id == current_user.id %>
+              <h4>You</h4>
+            <% else %>
+              <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
+            <% end %>
+            <% if ticket.owner.id != current_user.id %>
               <%= form_with url: orders_path do %>
                 <%= hidden_field_tag 'ticket_id', ticket.id %>
                 <%= submit_tag 'Purchase', class: 'btn btn-primary m-1' %>
                 <br>
                 <%= link_to "Message the Seller", "", class: 'btn btn-primary m-1' %>
               <% end %>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
   <%= link_to "Sell new ticket for this event", new_event_ticket_path(@event) %>
-
 </div>
+
+<%# Footer %>
 <%= render "shared/footer" %>

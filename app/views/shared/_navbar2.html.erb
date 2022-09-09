@@ -35,11 +35,9 @@
           <li class="nav-item">
             <%= link_to "Sell a Ticket", events_path, class: "nav-link" %>
           </li>
-
-
           <li class="nav-item dropdown">
             <% if current_user.photo.key.present? %>
-              <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 300, height: 300, crop: "fill", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" } %>
+              <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 50, height: 50, crop: "fill", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" } %>
             <% else %>
               <div class="Navbar__avatar avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
                 <i class="fas fa-user-circle Navbar__user-icon"></i>

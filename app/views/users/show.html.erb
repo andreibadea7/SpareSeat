@@ -58,6 +58,8 @@
             <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
             <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
             <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
+            <p>Seat: <%= bought.ticket.seat %></p>
+            <%= link_to "View QR code for this match", order_path(bought.id)  %>
           <% end %>
         </div>
       </div>

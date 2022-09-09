@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
 
     @order.update(checkout_session_id: session.id)
     @ticket.update(for_sale: false)
+    @ticket.update(owner: current_user)
     redirect_to new_order_payment_path(@order)
   end
 

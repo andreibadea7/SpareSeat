@@ -21,7 +21,7 @@
 
     <h3><strong>Photo</strong></h3>
     <% if current_user.photo.key.present? %>
-      <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 200, height: 200, crop: "fill", class: "avatar-large" %>
+      <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 300, height: 300, crop: "fill", class: "avatar-large" %>
     <% else %>
       <p>You have not added a photo, if you would like to add one, click <%= link_to "here", edit_user_registration_path(@user) %></p>
     <% end %>

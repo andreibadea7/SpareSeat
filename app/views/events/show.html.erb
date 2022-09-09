@@ -17,14 +17,6 @@
 
 
 <div class="navbar-space m-5">
-  <h1><%= @event.name %></h1>
-  <hr class="w-100">
-  <h4><%= @event.date %> - <%= @event.venue[:name] %></h4>
-  <ul>
-    <li>Address: <%= @event.venue[:address] %>, <%= @event.venue[:city] %></li>
-    <li>Capacity: <%= number_with_delimiter(@event.venue[:capacity]) %></li>
-  </ul>
-
   <h3>Tickets</h3>
   <p class="text-muted"><%= @available_tickets.length %> tickets available</p>
   <div class="cards">
@@ -34,7 +26,6 @@
         <div class="card-trip-infos">
           <h3>Seat: <%= ticket.seat %> </h3>
           <h3>Price: £<%= ticket.price %></h3>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           <% if ticket.owner.id == current_user.id %>
             <h4>You</h4>
           <% else %>

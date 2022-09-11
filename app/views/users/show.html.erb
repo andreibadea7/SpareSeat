@@ -19,7 +19,7 @@
 
     <h3><strong>Photo</strong></h3>
     <% if current_user.photo.key.present? %>
-      <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 200, height: 200, crop: "fill", class: "avatar-large" %>
+      <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 300, height: 300, crop: "fill", class: "avatar-large" %>
     <% else %>
       <p>You have not added a photo, if you would like to add one, click <%= link_to "here", edit_user_registration_path(@user) %></p>
     <% end %>
@@ -44,7 +44,7 @@
         <%= link_to "", ticket_path(listing),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-solid fa-trash m-2"  %>
       </div>
-    </div>
+     <% end %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

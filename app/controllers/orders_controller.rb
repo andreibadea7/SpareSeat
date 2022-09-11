@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   def create
     @ticket = Ticket.find(params[:ticket_id])
-    @ticket.for_sale = false
     # raise
-    @order = Order.create!(ticket: @ticket, amount: @ticket.price, state: 'pending', user: current_user)
+    @order = Order.create!(ticket: @ticket, amount: @ticket.price,
+                           state: 'pending', user: current_user)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -24,10 +24,18 @@ class OrdersController < ApplicationController
 
     @order.update(checkout_session_id: session.id)
     @ticket.update(for_sale: false)
+    @ticket.update(owner: current_user)
     redirect_to new_order_payment_path(@order)
   end
 
   def show
     @order = current_user.orders.find(params[:id])
+    @qr_code = RQRCode::QRCode.new(@order.ticket.code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true
+    )
   end
 end

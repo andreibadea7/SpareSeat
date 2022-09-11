@@ -1,9 +1,11 @@
-<div class="container">
-  <div class="row py-4">
+<h1 class="m-5">Checkout summary</h1>
+<div class="container form-registration">
+  <div class="row">
     <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.ticket.event[:name] %></strong> for <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
+      <p><strong><%= @order.ticket.event[:name] %></strong> for <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
+      <p><strong><%= @order.ticket.event.date.strftime("%d %B, %Y | %H:%M") %></strong></p>
+      <p class="text-muted">Purchased from <%= @order.ticket.owner[:first_name] %> <%= @order.ticket.owner[:last_name] %></p>
+      <button id="pay" class="btn btn-primary rounded-pill">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');

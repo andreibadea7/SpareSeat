@@ -1,11 +1,8 @@
-<body class="devise">
-  <div class="form-registration">
-    <h3>Sell a ticket for <%= @event.name %></h3>
-    <%= simple_form_for [@event, @ticket] do |f| %>
-        <%= f.input :price %>
-        <%= f.input :seat %>
-        <%= f.input :code %>
-        <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</body>
+<div class="form-registration">
+  <h3>Sell a ticket for <%= @event.name %></h3>
+  <%= simple_form_for [@event, @ticket] do |f| %>
+      <%= f.input :price %>
+      <%= f.input :seat %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>

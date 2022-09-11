@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh;
   color: $white;
-  background-image: linear-gradient(118.98deg, rgba(96, 234, 255, 0.95), rgba(43, 49, 214, 0.95)), url(wembley.png);
+  background-image: linear-gradient(118.98deg, rgba(97, 234, 255, 0.902), rgba(43, 49, 214, 0.95)), url(wembley.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,7 +19,7 @@
   }
 
   &__heading {
-    font-size: 52px;
+    font-size: 4rem;
     font-weight: bold;
     max-width: 680px;
     // text-align: center;

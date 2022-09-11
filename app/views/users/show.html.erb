@@ -11,7 +11,7 @@
     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Tickets Selling</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Upcoming Tickets</button>
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Purchased Tickets</button>
   </li>
 </ul>
 <div class="tab-content m-5" id="myTabContent">
@@ -30,37 +30,32 @@
     <h3><strong>Email</strong></h3>
     <p><%= @user.email %></p>
     <hr>
-    <%= link_to "Edit your profile details", edit_user_registration_path(@user), class: "btn btn-primary" %>
+    <%= link_to "", edit_user_registration_path(@user), class: "fas fa-edit"%>
   </div>
   <div class="tab-pane fade m-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <p class="text-muted m-3"> <%= @user.first_name %>, you are selling <%= @my_tickets_selling.length %> tickets</p>
     <% @my_tickets_selling.each do |listing| %>
-    <% if listing.for_sale? %>
-      <div class="card-trip p-3 m-3">
-        <div class="card-trip-info">
-          <%= listing.event[:name] %>:
-          <%= listing.event[:date].strftime('%d-%m-%Y') %>
-          <p>£<%= listing.price %></p>
-          <%= link_to "Edit this listing", edit_ticket_path(listing), class: "btn btn-primary m-2"  %>
-          <%= link_to "Remove this listing", ticket_path(listing),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary m-2"  %>
-          <hr>
-        </div>
+    <div class="card-trip p-3 m-2">
+      <div class="card-trip-info">
+        <%= listing.event[:name] %>:
+        <%= listing.event[:date].strftime('%d-%m-%Y') %> <%= link_to "", event_path(listing.event), class: "fa-solid fa-up-right-from-square m-1"%>
+        <p>£<%= listing.price %></p>
+        <%= link_to "", edit_ticket_path(listing), class: "fas fa-edit m-2"  %>
+        <%= link_to "", ticket_path(listing),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-solid fa-trash m-2"  %>
       </div>
      <% end %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <p class="text-muted m-3"> <%= @user.first_name %>, you have purchased <%= @my_tickets_purchased.length %>  tickets!</p>
     <% @my_tickets_purchased.each do |bought| %>
       <div class="card-trip p-3 m-3">
         <div class="card-trip-info">
-          <% if bought.ticket.event[:date].strftime('%d-%m-%Y') > Date.today.strftime('%d-%m-%Y') %>
             <p><strong>TICKET</strong>: <%= bought.ticket.event[:name] %> </p>
             <p>Purchased on: <%= bought.created_at.to_date.strftime('%d-%m-%Y') %> </p>
             <p>Date of match: <%= bought.ticket.event[:date].strftime('%d-%m-%Y') %></p>
             <p>Cost: <%= humanized_money_with_symbol(bought.amount) %></p>
-            <p>Seat: <%= bought.ticket.seat %></p>
-            <%= link_to "View QR code for this match", order_path(bought.id)  %>
-          <% end %>
         </div>
       </div>
     <% end %>

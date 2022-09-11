@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="row py-4">
+<div class="container form-registration p-3">
+  <div class="row">
     <div class="col">
       <h1>Your ticket order is confirmed!</h1>
       <ul class="list-unstyled">
-        <li><strong>TICKET</strong> <%= @order.ticket.event[:name]%></li>
-        <%= @svg.html_safe %>
-        <br>
-        <%= link_to "Back to profile", my_profile_path %>
+        <li><strong>Date of purchase:</strong> <%= @order.created_at.to_date %></li>
+        <li><strong>Game:</strong> <%= @order.ticket.event[:name]%></li>
+        <li><strong>Price:</strong> <%= humanized_money_with_symbol(@order.amount)%></li>
+        <p class="text-muted mt-3"><%= link_to "", my_profile_path, class: "fa-solid fa-arrow-left"%> Back to your profile </p>
         </li>
       </ul>
     </div>

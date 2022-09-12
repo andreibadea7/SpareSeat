@@ -14,7 +14,7 @@
 
   <body>
     <div class="content">
-      <%= render "shared/navbar" %>
+      <%= render "shared/navbar" unless current_page?(events_path) %>
       <%= render "shared/flashes" %>
       <%= yield %>
     </div>

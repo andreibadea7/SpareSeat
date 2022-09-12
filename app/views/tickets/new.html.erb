@@ -3,6 +3,7 @@
   <%= simple_form_for [@event, @ticket] do |f| %>
       <%= f.input :price %>
       <%= f.input :seat %>
+      <%= f.input :code, :as => :hidden, :input_html => { :value => " "} %>
       <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>

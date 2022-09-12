@@ -6,6 +6,8 @@
         <li><strong>Date of purchase:</strong> <%= @order.created_at.to_date %></li>
         <li><strong>Game:</strong> <%= @order.ticket.event[:name]%></li>
         <li><strong>Price:</strong> <%= humanized_money_with_symbol(@order.amount)%></li>
+        <br>
+        <li><%= @svg.html_safe %></li>
         <p class="text-muted mt-3"><%= link_to "", my_profile_path, class: "fa-solid fa-arrow-left"%> Back to your profile </p>
         </li>
       </ul>

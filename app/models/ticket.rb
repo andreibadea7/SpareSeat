@@ -5,4 +5,7 @@ class Ticket < ApplicationRecord
 
   # Monetize Config
   monetize :price_cents
+
+  #
+  validates :seat, uniqueness: true
 end

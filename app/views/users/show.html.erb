@@ -19,6 +19,7 @@
     <h3><strong>Photo</strong></h3>
     <% if current_user.photo.key.present? %>
       <%= cl_image_tag current_user.photo.key, gravity: 'face', width: 300, height: 300, crop: "fill", class: "avatar-large" %>
+      <p class="mt-2">What a lovely photo, <%= @user.first_name %> 😆!</p>
     <% else %>
       <p>You have not added a photo, if you would like to add one, click <%= link_to "here", edit_user_registration_path(@user) %></p>
     <% end %>
@@ -34,14 +35,15 @@
   <div class="tab-pane fade m-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <p class="text-muted m-3"> <%= @user.first_name %>, you are selling <%= @my_tickets_selling.length %> tickets</p>
     <% @my_tickets_selling.each do |listing| %>
-    <div class="card-trip p-3 m-2">
-      <div class="card-trip-info">
-        <%= listing.event[:name] %>:
-        <%= listing.event[:date].strftime('%d-%m-%Y') %> <%= link_to "", event_path(listing.event), class: "fa-solid fa-up-right-from-square m-1"%>
-        <p>£<%= listing.price %></p>
-        <%= link_to "", edit_ticket_path(listing), class: "fas fa-edit m-2"  %>
-        <%= link_to "", ticket_path(listing),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-solid fa-trash m-2"  %>
+      <div class="card-trip p-3 m-2">
+        <div class="card-trip-info">
+          <%= listing.event[:name] %>:
+          <%= listing.event[:date].strftime('%d-%m-%Y') %> <%= link_to "", event_path(listing.event), class: "fa-solid fa-up-right-from-square m-1"%>
+          <p>£<%= listing.price %></p>
+          <%= link_to "", edit_ticket_path(listing), class: "fas fa-edit m-2"  %>
+          <%= link_to "", ticket_path(listing),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-solid fa-trash m-2"  %>
+        </div>
       </div>
     <% end %>
   </div>

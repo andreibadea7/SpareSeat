@@ -1,21 +1,29 @@
-<div class="cards mb-5" data-search-events-target="list">
-  <% events.each do |event| %>
-    <div class="card">
-      <%= image_tag event.venue.images.first.image_url %>
-      <div class="card-infos">
-        <div>
-          <h2>
-            <%= link_to event.name,
-                event_path(event),
-                style: "text-decoration: none; color: black;" %>
-          </h2>
-          <p><%= event.venue.name %></p>
+
+<div class="cards-list" data-search-events-target="list">
+  <div class="cards mb-5" >
+    <% events.each do |event| %>
+      <div class="card">
+        <%= image_tag event.venue.images.first.image_url %>
+        <div class="card-infos">
+          <div>
+            <h2>
+              <%= link_to event.name,
+                  event_path(event),
+                  style: "text-decoration: none; color: black;" %>
+            </h2>
+            <p><%= event.venue.name %></p>
+          </div>
+          <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
+
+          <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
+
         </div>
-        <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
-
-        <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
-
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div>
+
+  <div class="pagination-container container">
+    <%= paginate @events %>
+  </div>
 </div>

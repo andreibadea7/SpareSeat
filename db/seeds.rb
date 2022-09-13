@@ -301,6 +301,7 @@ end
     event_id: Event.all.sample.id,
     owner_id: User.all.sample.id,
     price_cents: rand(5000..15_000),
-    seat: "#{rand(1..100)}#{Array('A'..'Z').sample}"
+    seat: "#{rand(1..100)}#{Array('A'..'Z').sample}",
+    code: " "
   )
 end

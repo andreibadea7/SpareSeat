@@ -6,6 +6,7 @@
         <li><strong>Date of purchase:</strong> <%= @order.created_at.to_date %></li>
         <li><strong>Game:</strong> <%= @order.ticket.event[:name]%></li>
         <li><strong>Price:</strong> <%= humanized_money_with_symbol(@order.amount)%></li>
+        <li><strong>Seat:</strong> <%= @order.ticket.seat %></li>
         <br>
         <li><%= @svg.html_safe %></li>
         <p class="text-muted mt-3"><%= link_to "", my_profile_path, class: "fa-solid fa-arrow-left"%> Back to your profile </p>
@@ -14,5 +15,3 @@
     </div>
   </div>
 </div>
-
-<%# Need to put @order.state in the h1 tag %>

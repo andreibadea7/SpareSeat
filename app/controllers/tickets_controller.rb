@@ -8,6 +8,9 @@ class TicketsController < ApplicationController
     if user_signed_in?
       @event = Event.find(params[:event_id])
       @ticket = Ticket.new(ticket_params)
+
+      # if Ticket.where(:seat == @ticket.seat)
+
       @ticket.event = @event
       @ticket.owner = current_user
       if @ticket.save

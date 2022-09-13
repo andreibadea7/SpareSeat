@@ -48,7 +48,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-    <p class="text-muted m-3"> <%= @user.first_name %>, you have purchased <%= @my_tickets_purchased.length %>  tickets!</p>
+    <p class="text-muted m-3"> <%= @user.first_name %>, you have purchased <%= @my_tickets_purchased.length %>  ticket(s)!</p>
     <% @my_tickets_purchased.each do |bought| %>
       <div class="card-trip p-3 m-3">
         <div class="card-trip-info">

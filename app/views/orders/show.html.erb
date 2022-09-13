@@ -3,7 +3,7 @@
     <div class="col">
       <h1>Your ticket order is confirmed!</h1>
       <ul class="list-unstyled">
-        <li><strong>Date of purchase:</strong> <%= @order.created_at.to_date %></li>
+        <li><strong>Date of purchase:</strong> <%= @order.created_at.to_date.strftime('%d-%m-%Y') %></li>
         <li><strong>Game:</strong> <%= @order.ticket.event[:name]%></li>
         <li><strong>Price:</strong> <%= humanized_money_with_symbol(@order.amount)%></li>
         <li><strong>Seat:</strong> <%= @order.ticket.seat %></li>

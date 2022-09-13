@@ -86,3 +86,26 @@
 #keywords tbody tr td:hover .button-align {
   opacity: 1;
 }
+
+.messages {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  padding: 0px;
+}
+
+.messages p{
+  visibility: hidden;
+  margin-left: 15px;
+  transition: 0.25s ease-out;
+  font-size: 18px;
+}
+
+.messages:hover p{
+      visibility: visible;
+    }
+
+.button-align{
+  display: flex;
+  justify-content: center;
+}

@@ -1,6 +1,20 @@
 .alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  padding: 15px 15px;
+  position: absolute;
+  width: 99.2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  margin: 6px;
+}
+
+.alert-success {
+  border: 2px solid #242569;
+}
+
+.alert-info {
+  border: 2px solid #242569;
 }

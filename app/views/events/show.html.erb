@@ -1,3 +1,9 @@
+
+<div class="event-banner"
+     style="background-image: linear-gradient(rgba(0,0,0,0.3),
+                              rgba(0,0,0,0.3)),
+                              url(<%= @event.venue.images.first.image_url %>);">
+</div>
 <div class="top-section">
   <div class="container">
     <div class="event-information">
@@ -9,37 +15,38 @@
     </div>
   </div>
 </div>
-<div class="event-banner"
-     style="background-image: linear-gradient(rgba(0,0,0,0.3),
-                              rgba(0,0,0,0.3)),
-                              url(<%= @event.venue.images.first.image_url %>);">
-</div>
 
-<div class="navbar-space m-5">
-  <h3>Tickets</h3>
-  <p class="text-muted"><%= @available_tickets.length %> tickets available</p>
-  <div class="cards">
-    <% @available_tickets.each do |ticket| %>
-      <div class="card-trip">
-        <%= image_tag("wembley.png") %>
-        <div class="card-trip-infos">
-          <h3>Seat: <%= ticket.seat %> </h3>
-          <h3>Price: £<%= ticket.price %></h3>
-          <% if ticket.owner.id == current_user.id %>
-            <h4>You</h4>
-          <% else %>
-            <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
-          <% end %>
-          <% if ticket.owner.id != current_user.id %>
-            <%= form_with url: orders_path do %>
-              <%= hidden_field_tag 'ticket_id', ticket.id %>
-              <%= submit_tag 'Purchase', class: 'btn btn-primary m-1' %>
-              <br>
-              <%= link_to "Message the Seller", "", class: 'btn btn-primary m-1' %>
+<hr>
+
+<div id="wrapper">
+  <table id="keywords" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th><span><%= link_to "Seat", :sort => "seat"%></span></th>
+        <th><span><%= link_to "Seller", :sort => "owner"%></span></th>
+        <th><span><%= link_to "Price", :sort => "price"%></span></th>
+        <th><span></span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @available_tickets.each do |ticket| %>
+        <tr>
+          <td class="lalign"><%= ticket.seat %></td>
+          <td>
+            <% if ticket.owner.id == current_user.id %>
+              <h4>You</h4>
+            <% else %>
+              <%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %>
             <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+          </td>
+          <td><strong>£<%= ticket.price %></strong></td>
+          <td class="button-align">
+            <% if ticket.owner.id != current_user.id %>
+              <%= link_to "", "", class: 'fa-solid fa-message' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+ </div>

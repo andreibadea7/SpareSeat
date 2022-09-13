@@ -14,7 +14,7 @@
 
   <body>
     <div class="content">
-      <%= render "shared/navbar" unless current_page?(controller: :events) %>
+      <%= render "shared/navbar" unless (params[:controller] == "events" && params[:action] == "index") %>
       <%= render "shared/flashes" %>
       <%= yield %>
     </div>

@@ -85,7 +85,7 @@ def add_images_to_premier_league_stadiums_venues
     stadium_name = html_doc.search(".header_block span").text.split(" -")[0]
     image_url = html_doc.search(".galerie-bild").attr("src").value.split("?")[0]
     venue_id = Venue.where("REPLACE(name, 'The American Express Community', 'AMEX') ILIKE ?",
-              stadium_name).or(Venue.where("REPLACE(name, '.', '') ILIKE ?", stadium_name)).first.id
+               stadium_name).or(Venue.where("REPLACE(name, '.', '') ILIKE ?", stadium_name)).first.id
     Image.create(image_url: image_url,
                  imageable_id: venue_id,
                  imageable_type: "Venue")
@@ -264,7 +264,8 @@ def add_images_to_league_one_stadiums_venues
     html_doc = Nokogiri::HTML(serialized)
     stadium_name = html_doc.search(".header_block span").text.split(" -")[0]
     image_url = html_doc.search(".galerie-bild").attr("src").value.split("?")[0]
-    venue_id = Venue.where("REPLACE(name, '.', '') ILIKE ?", stadium_name).ids.first
+    venue_id = Venue.where("REPLACE(name, ' ', ' Stadium') ILIKE ?",
+    stadium_name).or(Venue.where("REPLACE(name, '.', '') ILIKE ?", stadium_name)).ids.first
     Image.create(image_url: image_url,
                  imageable_id: venue_id,
                  imageable_type: "Venue")

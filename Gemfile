@@ -52,6 +52,7 @@ gem 'stripe'
 gem 'kaminari'
 gem 'rqrcode', '~> 2.0'
 gem 'stripe_event'
+gem 'geocoder'
 gem 'jquery-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

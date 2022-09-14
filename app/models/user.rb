@@ -9,6 +9,10 @@ class User < ApplicationRecord
     Chatroom.where("participant_one_id = ? OR participant_two_id = ?", id, id)
   end
 
+  def chats_with(interlocutor)
+    chats.where("participant_one_id = ? OR participant_two_id = ?", interlocutor, interlocutor)
+  end
+
   def transactions
     Order.where("seller_id = ? OR buyer_id = ?", id, id)
   end

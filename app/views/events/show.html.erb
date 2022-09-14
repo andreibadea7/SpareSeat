@@ -31,11 +31,10 @@
             <p><%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %></p>
           <% end %>
           <% if ticket.owner.id != current_user.id %>
-            <%= form_with url: orders_path do %>
-              <%= hidden_field_tag 'ticket_id', ticket.id %>
-              <%= submit_tag 'Purchase', class: 'btn btn-primary m-1' %>
-              <br>
-              <%= link_to "Message the Seller", "", class: 'btn btn-primary m-1' %>
+            <%= simple_form_for @chatroom do |f| %>
+              <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
+              <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
+              <%= f.submit "Message Seller", class: 'btn btn-primary m-1' %>
             <% end %>
           <% end %>
         </div>

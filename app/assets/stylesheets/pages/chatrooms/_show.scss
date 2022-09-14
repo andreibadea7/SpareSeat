@@ -28,6 +28,26 @@
     padding: 1rem;
   }
 
+  .chatroom-message {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+
+    .chatroom-message-content {
+      flex-grow: 1;
+      padding: 0 24px;
+    }
+
+    .chatroom-message-content-time {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
   #new_message {
     border-top: 1px solid $gray-200;
     padding: 1rem;

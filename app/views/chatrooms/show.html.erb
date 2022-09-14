@@ -4,7 +4,7 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
   <div class="chatroom-header">
-    <h1><%= @chatroom.name %></h1>
+    <h1><%= @chatroom.interlocutor_of(current_user).first.full_name %></h1>
     <%= form_with url: orders_path do %>
       <%= hidden_field_tag 'ticket_id', @ticket %>
       <%= submit_tag 'Purchase Ticket', class: 'btn btn-primary m-1' %>
@@ -21,7 +21,7 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.name}",
+      placeholder: "Message #{@chatroom.interlocutor_of(current_user).first.first_name}",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>

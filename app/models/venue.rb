@@ -5,7 +5,7 @@ class Venue < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  def address
-    "#{name}, #{city}, #{country}"
+  def full_address
+    "#{name}, #{address}, #{city}, #{country}"
   end
 end

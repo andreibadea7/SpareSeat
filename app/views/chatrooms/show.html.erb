@@ -3,8 +3,13 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
-  <h1>#<%= @chatroom.name %></h1>
-
+  <div class="chatroom-header">
+    <h1>#<%= @chatroom.name %></h1>
+    <%= form_with url: orders_path do %>
+      <%= hidden_field_tag 'ticket_id', @interlocutor.tickets.first.id %>
+      <%= submit_tag 'Purchase Ticket', class: 'btn btn-primary m-1' %>
+    <% end %>
+  </div>
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <%= render "messages/message", message: message %>

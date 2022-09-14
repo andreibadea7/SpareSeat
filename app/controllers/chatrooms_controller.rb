@@ -21,6 +21,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @interlocutor = @chatroom.participants.where.not(id: current_user.id).first
   end
 
   private

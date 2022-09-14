@@ -23,13 +23,15 @@ class OrdersController < ApplicationController
     )
 
     @order.update(checkout_session_id: session.id)
-    @ticket.update(for_sale: false)
-    @ticket.update(owner: current_user)
     redirect_to new_order_payment_path(@order)
   end
 
   def show
     @order = current_user.orders.find(params[:id])
+    @order.ticket.update(owner: current_user)
+    @order.ticket.update(for_sale: false)
+
+    @order.ticket.code = SecureRandom.hex
     @qr_code = RQRCode::QRCode.new(@order.ticket.code)
     @svg = @qr_code.as_svg(
       offset: 0,

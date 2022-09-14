@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_session_path
     end
-    @my_tickets_purchased = Order.where(user: current_user)
+    @my_tickets_purchased = Order.where(user: current_user).and(Order.where(state: "paid"))
   end
 
   private

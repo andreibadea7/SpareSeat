@@ -10,8 +10,13 @@
       <div>
         <h2><%= @event.name %></h2>
         <p class="venue-name"><%= @event.venue.address %></p>
+        <p><%= @event.date.strftime("%d %B, %Y | %H:%M") %></p>
       </div>
-      <p><%= @event.date.strftime("%d %B, %Y | %H:%M") %></p>
+      <div data-controller="map"
+        data-map-marker-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        class="map">
+      </div>
     </div>
   </div>
 </div>
@@ -22,10 +27,10 @@
   <table id="keywords" cellspacing="0" cellpadding="0">
     <thead>
       <tr>
-        <th><span><%= link_to "Seat", :sort => "seat"%></span></th>
-        <th><span><%= link_to "Seller", :sort => "owner"%></span></th>
-        <th><span><%= link_to "Price", :sort => "price"%></span></th>
-        <th><span></span></th>
+        <th>Seat</th>
+        <th>Seller</th>
+        <th>Price</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -42,15 +47,15 @@
           <td><strong>£<%= ticket.price %></strong></td>
           <td class="button-align">
             <% if ticket.owner.id != current_user.id %>
-            <%= simple_form_for @chatroom do |f| %>
-              <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
-              <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
-              <%= f.submit "Message Seller", class: 'btn btn-primary m-1' %>
+              <%= simple_form_for @chatroom do |f| %>
+                <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
+                <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
+                <%= f.submit "Message Seller", class: 'btn btn-primary m-1' %>
+              <% end %>
             <% end %>
-          <% end %>
           </td>
         </tr>
       <% end  %>
     </tbody>
   </table>
- </div>
+</div>

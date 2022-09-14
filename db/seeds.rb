@@ -31,11 +31,12 @@ def add_premier_league_venues_to_database
     country = info["team"]["country"]
     address = info["venue"]["address"]
     capacity = info["venue"]["capacity"]
+    full_address = "#{address}, #{city}, #{country}"
     Venue.create(name: stadium,
                  city: city,
                  country: country,
                  capacity: capacity,
-                 address: address)
+                 address: full_address)
   end
   puts "#{"\u2713".encode('utf-8') * 3} | All Premier League Venues have been Uploaded onto The Database"
 end

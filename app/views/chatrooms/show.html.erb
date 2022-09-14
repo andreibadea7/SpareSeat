@@ -7,7 +7,7 @@
     <h1>#<%= @chatroom.name %></h1>
     <%= form_with url: orders_path do %>
       <%= hidden_field_tag 'ticket_id', @interlocutor.tickets.first.id %>
-      <%= submit_tag 'Purchase Ticket', class: 'purchase-btn btn btn-primary m-1' %>
+      <%= submit_tag 'Purchase Ticket', class: 'btn btn-primary m-1' %>
     <% end %>
   </div>
   <div class="messages" data-chatroom-subscription-target="messages">

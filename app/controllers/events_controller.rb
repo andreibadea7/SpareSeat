@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
   def index
-    # @events = Event.order(:date).page params[:page]
-
     @events = Event.all
-    # raise
     @events = Event.joins(:venue)
                    .where("venues.name ILIKE ? OR events.name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
                    .order(:date)
@@ -19,5 +16,6 @@ class EventsController < ApplicationController
     @user = current_user
     @event = Event.find(params[:id])
     @available_tickets = @event.tickets.where(for_sale: true).order("price_cents DESC")
+    @chatroom = Chatroom.new
   end
 end

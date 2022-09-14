@@ -4,12 +4,17 @@
      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
   <h1>#<%= @chatroom.name %></h1>
+  <div class="wrapper">
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
+    <div class="side-section">
+    </div>
   </div>
+
 
   <%= simple_form_for [@chatroom, @message],
     html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
@@ -22,4 +27,7 @@
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
+</div>
+<div class="chatroom2">
+
 </div>

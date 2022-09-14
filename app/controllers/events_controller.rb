@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
   def index
-    # @events = Event.order(:date).page params[:page]
-
     @events = Event.all
-    # raise
     @events = Event.joins(:venue)
                    .where("venues.name ILIKE ? OR events.name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
                    .order(:date)
@@ -28,5 +25,8 @@ class EventsController < ApplicationController
         lng: @venue.longitude
       }
     ]
+
+    @chatroom = Chatroom.new
+
   end
 end

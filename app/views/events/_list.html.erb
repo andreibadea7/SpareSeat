@@ -11,12 +11,13 @@
                   event_path(event),
                   style: "text-decoration: none; color: black;" %>
             </h2>
-            <p><%= event.venue.name %></p>
+            <p><em><%= event.venue.name %></em></p>
+            <hr class="mt-1 mb-1">
+            <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
           </div>
-          <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
-
-          <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
-
+          <div>
+            <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
+          </div>
         </div>
       </div>
     <% end %>

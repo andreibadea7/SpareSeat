@@ -328,6 +328,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   geocoder
   jbuilder
+  jquery-rails
   jsbundling-rails
   kaminari
   money-rails

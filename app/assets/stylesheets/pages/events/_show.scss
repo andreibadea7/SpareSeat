@@ -92,13 +92,14 @@
 .ticket-message {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 200px;
-  padding: 0px;
 }
 
 .ticket-message p{
   visibility: hidden;
-  margin-left: 15px;
+  margin-left: 20px;
+  margin-top: 10px;
   transition: 0.25s ease-out;
   font-size: 18px;
 }
@@ -123,4 +124,9 @@
   padding: 15px;
   margin-left: 25px;
   border-radius: 10px;
+}
+
+.icon{
+  border: none;
+  background: none;
 }

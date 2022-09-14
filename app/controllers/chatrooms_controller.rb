@@ -11,7 +11,7 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.new(chatroom_params)
       @chatroom.name = "#{@chatroom.participant_one.first_name} & #{@chatroom.participant_two.first_name}"
       if @chatroom.save
-        redirect_to chatroom_path(@chatroom, params: params[:chatroom][:ticket_id])
+        redirect_to chatroom_path(@chatroom, ticket: params[:chatroom][:ticket_id])
       else
         render events_path, status: :unprocessable_entity
       end

@@ -4,7 +4,7 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
   <div class="chatroom-header">
-    <h1>#<%= @chatroom.name %></h1>
+    <h1><%= @chatroom.name %></h1>
     <%= form_with url: orders_path do %>
       <%= hidden_field_tag 'ticket_id', @ticket %>
       <%= submit_tag 'Purchase Ticket', class: 'btn btn-primary m-1' %>

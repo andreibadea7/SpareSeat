@@ -1,7 +1,16 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.sender.first_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+<div class="chatroom-message" id="message-<%= message.id %>">
+  <% if message.sender.photo.key.present? %>
+    <%= cl_image_tag message.sender.photo.key, gravity: 'face', width: 150, height: 150, crop: "fill", class:"avatar-large" %>
+  <% else %>
+    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <% end %>
+  <div class="chatroom-message-content">
+    <small>
+      <strong><%= message.sender.first_name %></strong>
+    </small>
+    <div class="chatroom-message-content-time">
+      <p><%= message.content %></p>
+      <p><small><%= message.created_at.strftime("%d %B - %H:%M") %></small></p>
+    </div>
+  </div>
 </div>

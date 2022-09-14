@@ -1,0 +1,16 @@
+<div class="chatroom-card">
+  <% if chatroom.interlocutor_of(current_user).first.photo.key.present? %>
+    <%= cl_image_tag chatroom.interlocutor_of(current_user).first.photo.key, gravity: 'face', width: 150, height: 150, crop: "fill", class:"avatar-large" %>
+  <% else %>
+    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <% end %>
+  <div class="chatroom-card-content">
+    <%= link_to chatroom.interlocutor_of(current_user).first.full_name, chatroom_path(chatroom), class: "text-decoration-none" %>
+    <% if chatroom.messages.last.present? %>
+      <div class="last-message">
+        <p><%= chatroom.messages.last.content.truncate(150) %></p>
+        <p><small><%= chatroom.messages.last.created_at.strftime("%d %B - %H:%M") %></small></p>
+      </div>
+    <% end %>
+  </div>
+</div>

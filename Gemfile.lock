@@ -330,7 +330,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 6.1)
   jbuilder
-  jquery-rails (~> 4.3, >= 4.3.3)
+  jquery-rails
   jsbundling-rails
   kaminari
   money-rails

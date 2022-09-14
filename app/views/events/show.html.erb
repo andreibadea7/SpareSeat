@@ -47,9 +47,11 @@
           <td><strong>£<%= ticket.price %></strong></td>
           <td class="button-align">
             <% if ticket.owner.id != current_user.id %>
-            <div class="ticket-message">
-              <%= link_to "", "", class: 'fa-solid fa-message' %><p class="text-muted">Message seller!</p>
-            </div>
+              <%= simple_form_for @chatroom do |f| %>
+                <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
+                <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
+                <%= f.submit "Message Seller", class: 'btn btn-primary m-1' %>
+              <% end %>
             <% end %>
           </td>
         </tr>

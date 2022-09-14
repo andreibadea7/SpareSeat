@@ -1,6 +1,7 @@
 .top-section {
   width: 100vw;
   margin-top: 10px;
+  height: 200px;
 }
 
 .top-section .container {
@@ -14,7 +15,6 @@
 .top-section .event-information {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
 }
 
 .top-section .event-information p {
@@ -38,9 +38,8 @@
 
 #wrapper {
   display: block;
-  width: 75vw;
   background: #fff;
-  margin: auto;
+  margin-left: 25px;
   padding: 10px 17px;
 }
 
@@ -51,14 +50,15 @@
   margin-bottom: 15px;
 }
 
-
 #keywords thead {
-  cursor: pointer;
+  // cursor: pointer;
   background: #c9dff0;
+  border: solid 1px grey;
 }
+
 #keywords thead tr th {
   font-weight: bold;
-  padding: 12px;
+  padding: 20px;
 }
 #keywords thead tr th span {
   background-repeat: no-repeat;
@@ -71,6 +71,7 @@
 
 #keywords tbody tr {
   color: #555;
+  border: solid 0.5px grey;
 }
 #keywords tbody tr td {
   text-align: left;
@@ -81,31 +82,45 @@
   opacity: 0;
   display: flex;
   transition: ease .3s;
+  padding: 10px
 }
 
 #keywords tbody tr td:hover .button-align {
   opacity: 1;
 }
 
-.messages {
+.ticket-message {
   display: flex;
   justify-content: center;
   width: 200px;
   padding: 0px;
 }
 
-.messages p{
+.ticket-message p{
   visibility: hidden;
   margin-left: 15px;
   transition: 0.25s ease-out;
   font-size: 18px;
 }
 
-.messages:hover p{
+.ticket-message:hover p{
       visibility: visible;
     }
 
 .button-align{
   display: flex;
   justify-content: center;
+}
+
+#ticket-content{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.map{
+  width: 40%;
+  height: 175px;
+  padding: 15px;
+  margin-left: 25px;
+  border-radius: 10px;
 }

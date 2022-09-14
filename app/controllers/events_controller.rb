@@ -19,5 +19,14 @@ class EventsController < ApplicationController
     @user = current_user
     @event = Event.find(params[:id])
     @available_tickets = @event.tickets.where(for_sale: true).order("price_cents DESC")
+
+    @venue = @event.venue
+
+    @marker = [
+      {
+        lat: @venue.latitude,
+        lng: @venue.longitude
+      }
+    ]
   end
 end

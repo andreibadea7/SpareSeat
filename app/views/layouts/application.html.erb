@@ -36,11 +36,11 @@
   </head>
 
   <body>
-    <div class="content">
+    <%# <div class="content"> %>
       <%= render "shared/navbar" unless (params[:controller] == "events" && params[:action] == "index") %>
       <%= render "shared/flashes" %>
       <%= yield %>
-    </div>
+    <%# </div> %>
+    <footer class="footer"><%= render "shared/footer" %></footer>
   </body>
-  <footer class="footer"><%= render "shared/footer" %></footer>
 </html>

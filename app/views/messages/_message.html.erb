@@ -2,7 +2,7 @@
   <% if message.sender.photo.key.present? %>
     <%= cl_image_tag message.sender.photo.key, gravity: 'face', width: 150, height: 150, crop: "fill", class:"avatar-large" %>
   <% else %>
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+    <%= image_tag "default-male-avatar-profile-picture-icon-grey-man-photo-placeholder-vector-illustration-88414414.jpg", class: "avatar-large" %>
   <% end %>
   <div class="chatroom-message-content">
     <small>

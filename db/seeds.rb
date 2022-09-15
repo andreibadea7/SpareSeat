@@ -275,13 +275,13 @@ def add_images_to_league_one_stadiums_venues
   puts "#{"\u2713".encode('utf-8') * 3} | All League One Images have been Uploaded onto The Database"
 end
 
-# add_premier_league_venues_to_database
-# add_premier_league_events_to_database
+add_premier_league_venues_to_database
+add_premier_league_events_to_database
 # add_championship_venues_to_database
 # add_championship_events_to_database
 # add_league_one_venues_to_database
 # add_league_one_events_to_database
-# add_images_to_premier_league_stadiums_venues
+add_images_to_premier_league_stadiums_venues
 # add_images_to_championship_stadiums_venues
 # add_images_to_league_one_stadiums_venues
 
@@ -289,7 +289,7 @@ end
 first_name = ["Alex", "Rory", "Milly", "Curtis", "Hugh", "Adam", "Mike", "George", "Nick", "Laura"]
 last_name = ["Booth", "Smith", "Adams", "Beaney", "Hall", "Boyd", "Iffla", "Gooding", "Warren", "Phillips"]
 
-5.times do
+10.times do
   User.create!(
     first_name: first_name.sample,
     last_name: last_name.sample,
@@ -299,7 +299,7 @@ last_name = ["Booth", "Smith", "Adams", "Beaney", "Hall", "Boyd", "Iffla", "Good
   )
 end
 
-50.times do
+2000.times do
   Ticket.create!(
     event_id: Event.all.sample.id,
     owner_id: User.all.sample.id,

@@ -289,7 +289,7 @@ end
 first_name = ["Alex", "Rory", "Milly", "Curtis", "Hugh", "Adam", "Mike", "George", "Nick", "Laura"]
 last_name = ["Booth", "Smith", "Adams", "Beaney", "Hall", "Boyd", "Iffla", "Gooding", "Warren", "Phillips"]
 
-20.times do
+5.times do
   User.create!(
     first_name: first_name.sample,
     last_name: last_name.sample,
@@ -299,7 +299,7 @@ last_name = ["Booth", "Smith", "Adams", "Beaney", "Hall", "Boyd", "Iffla", "Good
   )
 end
 
-2000.times do
+50.times do
   Ticket.create!(
     event_id: Event.all.sample.id,
     owner_id: User.all.sample.id,

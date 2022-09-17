@@ -50,9 +50,6 @@
                   <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
                   <%= f.hidden_field 'ticket_id', value: ticket.id %>
                   <%= f.submit "Message Seller", class: 'btn btn-primary' %>
-                  <%# # <%= button_tag(type: 'submit', class:"icon") do %>
-                  <%# #   <i class="fa-solid fa-message"></i> %>
-                  <%# # <% end %>
                 <% end %>
               <% end %>
             </td>
@@ -61,5 +58,4 @@
       </tbody>
     </table>
   </div>
-
 </div>

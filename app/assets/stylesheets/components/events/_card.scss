@@ -26,10 +26,15 @@
 
 .card .card-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.card .card-infos-flex {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-infos .card-user {
@@ -42,4 +47,32 @@
 .card-infos .card-date {
   font-size: 0.8em;
   font-weight: normal;
+}
+
+.card .card-buttons {
+  display: flex;
+  width: 100%;
+
+  .button-container {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buy-button {
+    padding: 8px 16px;
+    background-color: navy;
+    color: white;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .sell-button {
+    padding: 8px 16px;
+    background-color: #242569;
+    color: white;
+    width: 100%;
+    border-radius: 0;
+  }
 }

@@ -14,14 +14,10 @@
   margin-bottom: 0;
 }
 
-.games-filters {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+.games-filter {
+  width: auto;
 }
 
-.games-filters-item {
-  padding: 0.25em 1.5em;
+.height-40 {
+  height: 40px;
 }

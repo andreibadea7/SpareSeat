@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <span>SpareSeat</span>
@@ -11,7 +11,7 @@
     <% unless current_page?(root_path) %>
       <%= form_with url: events_path,
                     method: :get,
-                    html: { class: "d-flex width-350", data: { search_events_target: "form" }} do |f| %>
+                    html: { class: "d-flex width-350 height-40", data: { search_events_target: "form" }} do |f| %>
         <%= f.text_field :query,
                           class: "form-control",
                           placeholder: "Search for an event or venue",
@@ -20,7 +20,7 @@
                             search_events_target: "input",
                             action: "keyup->search-events#update"
                           } %>
-        <%= button_tag :submit, class: "btn btn-primary btn-lg" do %>
+        <%= button_tag :submit, class: "btn btn-primary btn-md", style: "width: 50px;" do %>
           <i class="fa fa-search" aria-hidden="true"></i>
         <% end %>
       <% end %>

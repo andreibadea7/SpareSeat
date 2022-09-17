@@ -1,10 +1,13 @@
+.cards-list {
+  min-height: 45vh;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   width: 90vw;
   margin: 0 auto;
-  min-height: 43vh;
 }
 
 // Smallest device

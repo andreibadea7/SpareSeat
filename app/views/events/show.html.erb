@@ -3,7 +3,7 @@
                               rgba(0,0,0,0.3)),
                               url(<%= @event.venue.images.first.image_url %>);">
 </div>
-<div class="top-section">
+<div class="top-section border-bottom">
   <div class="container">
     <div class="event-information">
       <div>
@@ -20,45 +20,46 @@
   </div>
 </div>
 
-<hr>
-<div id="wrapper">
-  <table id="keywords" cellspacing="0" cellpadding="0">
-    <thead>
-      <tr>
-        <th>Seat</th>
-        <th>Seller</th>
-        <th>Price</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @available_tickets.each do |ticket| %>
+<div id="wrapper" class="tickets-table-section">
+  <div class="container">
+    <table id="keywords" class="tickets-table" cellspacing="0" cellpadding="0">
+      <thead>
         <tr>
-          <td class="lalign"><%= ticket.seat %></td>
-          <td>
-            <% if ticket.owner.id == current_user.id %>
-              <h4>You</h4>
-            <% else %>
-              <%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %>
-            <% end %>
-          </td>
-          <td><strong>£<%= ticket.price %></strong></td>
-          <td class="ticket-message">
-            <% if ticket.owner.id != current_user.id %>
-              <%= simple_form_for @chatroom do |f| %>
-                <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
-                <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
-                <%= f.hidden_field 'ticket_id', value: ticket.id %>
-                <%# <%= f.submit "Message Seller", class: 'btn btn-primary m-1' %>
-                <%= button_tag(type: 'submit', class:"icon") do %>
-                  <i class="fa-solid fa-message"></i>
+          <th>Seat</th>
+          <th>Seller</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @available_tickets.each do |ticket| %>
+          <tr>
+            <td class="lalign"><%= ticket.seat %></td>
+            <td>
+              <% if ticket.owner.id == current_user.id %>
+                <h4>You</h4>
+              <% else %>
+                <%= ticket.owner[:first_name] %> <%= ticket.owner[:last_name] %>
+              <% end %>
+            </td>
+            <td>£<%= ticket.price %></td>
+            <td class="ticket-message">
+              <% if ticket.owner.id != current_user.id %>
+                <%= simple_form_for @chatroom do |f| %>
+                  <%= f.input :participant_one_id, as: :hidden, input_html: { value: ticket.owner.id } %>
+                  <%= f.input :participant_two_id, as: :hidden, input_html: { value: current_user.id } %>
+                  <%= f.hidden_field 'ticket_id', value: ticket.id %>
+                  <%= f.submit "Message Seller", class: 'btn btn-primary' %>
+                  <%# # <%= button_tag(type: 'submit', class:"icon") do %>
+                  <%# #   <i class="fa-solid fa-message"></i> %>
+                  <%# # <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-            <p>Message the seller!</p>
-          </td>
-        </tr>
-      <% end  %>
-    </tbody>
-  </table>
+            </td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
+  </div>
+
 </div>

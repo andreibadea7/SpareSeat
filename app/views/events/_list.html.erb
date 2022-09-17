@@ -5,18 +5,24 @@
       <div class="card">
         <%= image_tag event.venue.images.first.image_url %>
         <div class="card-infos">
-          <div>
+          <div class="card-infos-event-title">
             <h2>
               <%= link_to event.name,
                   event_path(event),
                   style: "text-decoration: none; color: black;" %>
             </h2>
-            <p><em><%= event.venue.name %></em></p>
-            <hr class="mt-1 mb-1">
+          </div>
+          <div class="card-infos-flex">
+            <p><%= event.venue.name %></p>
             <p class="card-date"><%= event.date.strftime("%d %B, %Y | %H:%M") %></p>
           </div>
-          <div>
-            <%= link_to "Sell your ticket", new_event_ticket_path(event), class: "btn btn-primary mt-2 m-1 rounded-pill" %>
+        </div>
+        <div class="card-buttons">
+          <div class="button-container">
+            <%= link_to "Buy a Ticket", event_path(event), class: "btn buy-button" %>
+          </div>
+          <div class="button-container">
+            <%= link_to "Sell your Ticket", new_event_ticket_path(event), class: "btn sell-button"%>
           </div>
         </div>
       </div>

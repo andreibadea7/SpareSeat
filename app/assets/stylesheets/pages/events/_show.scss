@@ -1,7 +1,7 @@
 .top-section {
   width: 100vw;
   margin-top: 10px;
-  height: 200px;
+  // height: 200px;
 }
 
 .top-section .container {
@@ -36,77 +36,87 @@
   position: relative;
 }
 
-#wrapper {
-  display: block;
+.tickets-table-section {
+  // display: block;
   background: #fff;
-  margin-left: 25px;
-  padding: 10px 17px;
+  // padding: 10px 17px;
 }
 
-#keywords {
+.tickets-table-section .container {
+  align-items: center;
   margin: 0 auto;
-  width: 75vw;
-  font-size: 1.2em;
-  margin-bottom: 15px;
+  max-width: 80vw;
+  padding: 16px 0;
+  justify-content: space-between;
 }
 
-#keywords thead {
+.tickets-table {
+  margin: 0 auto;
+  width: 100%;
+  // margin-bottom: 15px;
+}
+
+.tickets-table thead {
   // cursor: pointer;
   background: #c9dff0;
   border: solid 1px grey;
 }
 
-#keywords thead tr th {
+.tickets-table thead tr th {
   font-weight: bold;
   padding: 20px;
 }
-#keywords thead tr th span {
+.tickets-table thead tr th span {
   background-repeat: no-repeat;
   background-position: 100% 100%;
 }
 
-#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+.tickets-table thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
   background: #acc8dd;
 }
 
-#keywords tbody tr {
+.tickets-table tbody tr {
   color: #555;
   border: solid 0.5px grey;
 }
-#keywords tbody tr td {
+.tickets-table tbody tr td {
   text-align: left;
-  padding: 15px;
+  padding: 20px;
 }
 
-#keywords tbody tr td .button-align {
+.tickets-table tbody tr td .button-align {
   opacity: 0;
   display: flex;
   transition: ease .3s;
   padding: 10px
 }
 
-#keywords tbody tr td:hover .button-align {
+.tickets-table tbody tr td:hover .button-align {
   opacity: 1;
 }
 
 .ticket-message {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  width: 200px;
+  // width: 200px;
 }
 
-.ticket-message p{
-  visibility: hidden;
-  margin-left: 20px;
-  margin-top: 10px;
-  transition: 0.25s ease-out;
-  font-size: 18px;
+.ticket-message form .mb-3 {
+  margin-bottom: 0 !important;
 }
 
-.ticket-message:hover p{
-      visibility: visible;
-    }
+// .ticket-message p{
+//   visibility: hidden;
+//   margin-left: 20px;
+//   margin-top: 10px;
+//   transition: 0.25s ease-out;
+//   font-size: 18px;
+// }
+
+// .ticket-message:hover p{
+//       visibility: visible;
+//     }
 
 .button-align{
   display: flex;

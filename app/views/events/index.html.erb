@@ -1,15 +1,17 @@
-<div class="events-index-wrapper" data-controller="search-events">
+<div data-controller="search-events">
 
   <%# Navbar. It is rendered here to be a child of the "search-events" data controller. %>
   <%= render "shared/navbar" %>
 
   <%# Header %>
-  <div class="header border-top">
+  <div class="header">
     <div class="container">
       <h3>Matches</h3>
-      <ul class="games-filters">
-        <li class="games-filters-item">League</li>
-      </ul>
+      <select class="form-select games-filter" aria-label="Default select example">
+        <option selected>Premier League</option>
+        <option value="League One">League One</option>
+        <option value="Championships">Championships</option>
+      </select>
     </div>
   </div>
 

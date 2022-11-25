@@ -277,11 +277,11 @@ end
 
 add_premier_league_venues_to_database
 add_premier_league_events_to_database
-# add_championship_venues_to_database
-# add_championship_events_to_database
-# add_league_one_venues_to_database
-# add_league_one_events_to_database
-add_images_to_premier_league_stadiums_venues
+add_championship_venues_to_database
+add_championship_events_to_database
+add_league_one_venues_to_database
+add_league_one_events_to_database
+# add_images_to_premier_league_stadiums_venues
 # add_images_to_championship_stadiums_venues
 # add_images_to_league_one_stadiums_venues
 
@@ -308,5 +308,3 @@ end
     code: " "
   )
 end
-
-#

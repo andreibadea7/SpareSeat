@@ -75,7 +75,7 @@ def add_premier_league_events_to_database
 end
 
 def add_images_to_premier_league_stadiums_venues
-  # Image.delete_all
+  Image.delete_all
   puts "Adding images..."
   url = 'https://www.transfermarkt.com/premier-league/stadien/wettbewerb/GB1/galerie/1'
   x = 1
@@ -277,11 +277,11 @@ end
 
 # add_premier_league_venues_to_database
 # add_premier_league_events_to_database
-# add_championship_venues_to_database
-# add_championship_events_to_database
-# add_league_one_venues_to_database
-# add_league_one_events_to_database
-add_images_to_premier_league_stadiums_venues
+add_championship_venues_to_database
+add_championship_events_to_database
+add_league_one_venues_to_database
+add_league_one_events_to_database
+# add_images_to_premier_league_stadiums_venues
 add_images_to_championship_stadiums_venues
 add_images_to_league_one_stadiums_venues
 

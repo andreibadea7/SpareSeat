@@ -3,7 +3,11 @@
   <div class="cards mb-5" >
     <% events.each do |event| %>
       <div class="card">
-        <%= image_tag event.venue.images.first.image_url %>
+        <% if event.venue.images.first %>
+          <%= image_tag event.venue.images.first.image_url %>
+        <% else %>
+          <%= image_tag "https://tmssl.akamaized.net//images/galerie_bg.jpg" %>
+        <% end %>
         <div class="card-infos">
           <div class="card-infos-event-title">
             <h2>

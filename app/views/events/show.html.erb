@@ -1,7 +1,13 @@
 <div class="event-banner"
      style="background-image: linear-gradient(rgba(0,0,0,0.3),
                               rgba(0,0,0,0.3)),
-                              url(<%= @event.venue.images.first.image_url %>);">
+                              url(
+                                <% unless @event.venue.images.first %>
+                                  <%= "https://tmssl.akamaized.net//images/galerie_bg.jpg" %>
+                                <% else %>
+                                  <%= @event.venue.images.first.image_url %>
+                                <% end %>
+                              );">
 </div>
 <div class="top-section border-bottom">
   <div class="container">
